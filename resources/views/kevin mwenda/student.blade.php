@@ -18,7 +18,7 @@
 	<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.18/af-2.3.3/b-1.5.6/b-colvis-1.5.6/b-html5-1.5.6/b-print-1.5.6/cr-1.5.0/kt-2.5.0/r-2.2.2/datatables.min.js"></script>
 	<!--End of Dependencies. Comment out the above lines to remove any styling and front-end validation used.-->
 
-	<link rel="stylesheet" type="text/css" href="{{url('public/css/style.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{env('APP_ENV') === 'local' ? asset('public/css/style.css') : secure_asset('public/css/style.css')}}">
 
 </head>
 <body>

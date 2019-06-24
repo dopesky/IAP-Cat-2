@@ -47,12 +47,12 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'url' => ltrim($db["path"], "/"),
-            'host' => $db["host"],
-            'port' => $db["port"],
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => $db["user"],
-            'password' => $db["pass"],
+            'url' => is_array($db) && sizeof($db) > 1 ? ltrim($db["path"], "/") : env('DATABASE_URL'),
+            'host' => is_array($db) && sizeof($db) > 1 ? $db["host"] : env('DB_HOST'),
+            'port' => is_array($db) && sizeof($db) > 1 ? $db["port"] : env('DB_PORT'),
+            'database' => is_array($db) && sizeof($db) > 1 ? $db['database'] : env('DB_DATABASE'),
+            'username' => is_array($db) && sizeof($db) > 1 ? $db["user"] : env('DB_USERNAME'),
+            'password' => is_array($db) && sizeof($db) > 1 ? $db["pass"] : env('DB_PASSWORD'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
